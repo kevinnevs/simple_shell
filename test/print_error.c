@@ -8,7 +8,7 @@
 void no_such_file_dir(char *str, int c_n __attribute__((unused)), list_t *env)
 {
 	int count = 0;
-	char *shell, *num;
+	char *shell;
 
 	/* get shell name to write */
 	shell = get_env("_", env);
