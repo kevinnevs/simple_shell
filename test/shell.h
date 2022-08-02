@@ -13,7 +13,24 @@
 #include <dirent.h>
 #include <signal.h>
 
-int main(int ac, char **av, char **env);
-int input();
+/**
+ * struct_list - linked list for enviromental variables
+ * @var: holds enviromental variable string
+ * @next: prints to next node
+ */
+typedef struct list
+{
+	char *var;
+	struct list *next;
+} list_t;
+
+/* function prototypes */
+/* from prompt.c */
+int built_in(char **token, list_t *env, int num, char **command);
+char *ignore_space(char *str);
+void ctrl_D(int i, char *command, list_t *env);
+int prompt(char **en);
+/* from print_error.c */
+void no_such_file_dir(char *str, int c_n, list_t *env);
 
 #endif
