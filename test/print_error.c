@@ -5,7 +5,7 @@
  * @c_n: nth users typed command
  * @env: enviromental variables linked list to write shell name
  */
-void no_such_file_dir(char *str, int c_n, list_t *env)
+void no_such_file_dir(char *str, int c_n __attribute__((unused)), list_t *env)
 {
 	int count = 0;
 	char *shell, *num;
