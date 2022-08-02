@@ -16,7 +16,7 @@ void no_such_file_dir(char *str, int c_n, list_t *env)
 		count++;
 	write(STDOUT_FILENO, shell, count);
 	free(shell);
-	wrie(STDOUT_FILENO, ": ", 2);
+	write(STDOUT_FILENO, ": ", 2);
 	/*convert cmd line num to string to write */
 	num = int_to_string(c_n);
 	count = 0;
