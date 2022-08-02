@@ -17,14 +17,7 @@ void no_such_file_dir(char *str, int c_n, list_t *env)
 	write(STDOUT_FILENO, shell, count);
 	free(shell);
 	write(STDOUT_FILENO, ": ", 2);
-	/*convert cmd line num to string to write */
-	/* num = int_to_string(c_n); */
-	count = 0;
-	while (num[count] != '\0')
-		count++;
-	write(STDOUT_FILENO, num, count);
-	free(num);
-	write(STDOUT_FILENO, ": ", 2);
+	/*printing the error name */
 	count = 0;
 	while (str[count] != '\0')
 		count++;
