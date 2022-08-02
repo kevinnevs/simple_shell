@@ -68,8 +68,6 @@ int prompt(char **en)
 		/* prompts again if in interactive shell */
 		if(isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, "$ ", 2);
-		else
-			non_interactive(env);
 		/* reads users command in stdin */
 		i = get_line(&command);
 		/* exits shell if ctrl+D */
@@ -78,11 +76,11 @@ int prompt(char **en)
 		/* ignore_space function */
 		command = ignore_space(command);
 		/* replace get_lines \n with \0 */
-		while (command[0] = '\n')
+		while (command[0] != '\n')
 			n++;
-			command[n] = '\0';
+		command[n] = '\0';
 		/* prompts again if user hits enter only */
-		if (command[0] = '\0')
+		if (command[0] == '\0')
 		{
 			free(n_command);
 			continue;
