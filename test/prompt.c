@@ -91,7 +91,7 @@ int prompt(char **en)
 		exit_stat = built_in(token, env, command_line_no, NULL);
 		if (exit_stat)
 			continue;
-		exit_stat = execve(token, env, command_line_no);
+		exit_stat = _execve(token, env, command_line_no);
 	}
 	/* keeps on repeating till user exits shell */
 	while (1);
