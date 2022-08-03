@@ -50,5 +50,8 @@ void free_double_ptr(char **str);
 /* from __exit.c */
 int c_atoi(char *s);
 int __exit(char **str, list_t *env, int num, char **command);
+/* from env_linked_list.c */
+list_t *env_linked_list(char **env);
+int _env(char **str, list_t *env);
 
 #endif
