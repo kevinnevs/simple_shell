@@ -57,5 +57,8 @@ int _env(char **str, list_t *env);
 char *_strcpy(char *dest, char *src);
 /* from _strcat.c */
 char *_strcat(char *dest, char *src);
+/* from _getline.c */
+size_t get_line(char **str);
+
 
 #endif
