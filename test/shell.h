@@ -53,5 +53,7 @@ int __exit(char **str, list_t *env, int num, char **command);
 /* from env_linked_list.c */
 list_t *env_linked_list(char **env);
 int _env(char **str, list_t *env);
+/* from _strcpy.c */
+char *_strcpy(char *dest, char *src);
 
 #endif
