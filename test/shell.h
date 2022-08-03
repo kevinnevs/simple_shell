@@ -31,6 +31,7 @@ char *ignore_space(char *str);
 void ctrl_D(int i, char *command, list_t *env);
 int prompt(char **env);
 /* from print_error.c */
+void not_found(char *str, int c_n __attribute__((unused)), list_t *env);
 void no_such_file_dir(char *str, int c_n __attribute__((unused)), list_t *env);
 void illegal_number(char *str, int c_n __attribute__((unused)), list_t *env);
 /* from get_env.c */
