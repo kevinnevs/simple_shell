@@ -29,7 +29,7 @@ int c_atoi(char *s)
  * @command: bring in command to free
  * Return: 0 if success 2 if fail
  */
-int __exit(char **str, list_t *env, char **command)
+int __exit(char **str, list_t *env, int num, char **command)
 {
 	int e_value = 0;
 
@@ -38,7 +38,7 @@ int __exit(char **str, list_t *env, char **command)
 
 	if (e_value == -1) /* if value given after exit is invalid, perror */
 	{
-		/* illegal_number(str[1], num, env); */ /* print error msg */
+		illegal_number(str[1], num, env); /* print error msg */
 		free_double_ptr(str);
 		return (2);
 	}
