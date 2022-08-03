@@ -29,7 +29,7 @@ int c_atoi(char *s)
  * @command: bring in command to free
  * Return: 0 if success 2 if fail
  */
-int __exit(char **str, list_t *env, int num, char **command)
+int __exit(char **str, list_t *env, char **command)
 {
 	int e_value = 0;
 
