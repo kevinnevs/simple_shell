@@ -59,6 +59,8 @@ char *_strcpy(char *dest, char *src);
 char *_strcat(char *dest, char *src);
 /* from _getline.c */
 size_t get_line(char **str);
-
+/* from _execve.c */
+void c_exit(char **str, list_t *env);
+int _execve(char **s, list_t *env, int num);
 
 #endif
