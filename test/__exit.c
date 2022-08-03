@@ -38,7 +38,7 @@ int __exit(char **str, list_t *env, int num, char **command)
 
 	if (e_value == -1) /* if value given after exit is invalid, perror */
 	{
-		illegal_number(str[1], num, env); /* print error msg */
+		/* illegal_number(str[1], num, env); */ /* print error msg */
 		free_double_ptr(str);
 		return (2);
 	}
