@@ -65,5 +65,10 @@ void c_exit(char **str, list_t *env);
 int _execve(char **s, list_t *env, int num);
 /* from _which.c */
 char *_which(char *str, list_t *env);
+/* from _strtok.c */
+int t_strlen(char *str, int pos, char delm);
+int t_size(char *str, char delm);
+char *ignore_delm(char *str, char delm);
+char **_str_tok(char *str, char *delm);
 
 #endif
