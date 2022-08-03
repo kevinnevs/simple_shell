@@ -9,7 +9,8 @@
 int main(void)
 {
 	char *buffer;
-	size_t bufsize = 32;
+	char *ptr;
+	char *argv[] = {"/bin/ls", "/usr/", NULL};
 	/**
 	 * user gets prompted:
 	 * user gives input
@@ -19,18 +20,16 @@ int main(void)
 	 */
 
 	/*prompt user*/
-	prompt();
-
-	/*get user input*/
-	/*allocate memory and check if NULL*/
-	buffer = (char * )malloc(bufsize * sizeof(char));
-	if( buffer == NULL)
+	buffer = prompt();
+	/*remove null terminator from buffer using strtok()*/
+	ptr = strtok(buffer,"\n");
+	/*add user input to argv*/
+	argv[0] = ptr;
+	/*execute command*/
+	if (execve(argv[0], argv, NULL)== -1)
 	{
-		perror("Unable to allocate buffer");
-		exit(1);
+		perror("Error:");
 	}
-	getline(&buffer,&bufsize,stdin);
+	return (0);
 
-	/*tokenize user input*/
-	
 }
