@@ -55,5 +55,7 @@ list_t *env_linked_list(char **env);
 int _env(char **str, list_t *env);
 /* from _strcpy.c */
 char *_strcpy(char *dest, char *src);
+/* from _strcat.c */
+char *_strcat(char *dest, char *src);
 
 #endif
