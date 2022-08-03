@@ -46,5 +46,8 @@ int delete_nodeint_at_index(list_t **head, int index);
 void free_linked_list(list_t *list);
 /* from free_double_ptr.c */
 void free_double_ptr(char **str);
+/* from __exit.c */
+int c_atoi(char *s);
+int __exit(char **str, list_t *env, char **command);
 
 #endif
