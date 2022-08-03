@@ -34,7 +34,7 @@ void no_such_file_dir(char *str, int c_n __attribute__((unused)), list_t *env)
 void illegal_number(char *str, int c_n __attribute__((unused)), list_t *env)
 {
 	int count = 0;
-	char *shell = NULL, *num = NULL;
+	char *shell = NULL;
 
 	/* get shell name to write */
 	shell = get_env("_", env);
