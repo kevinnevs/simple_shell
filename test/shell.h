@@ -62,5 +62,7 @@ size_t get_line(char **str);
 /* from _execve.c */
 void c_exit(char **str, list_t *env);
 int _execve(char **s, list_t *env, int num);
+/* from _which.c */
+char *_which(char *str, list_t *env);
 
 #endif
