@@ -48,6 +48,6 @@ void free_linked_list(list_t *list);
 void free_double_ptr(char **str);
 /* from __exit.c */
 int c_atoi(char *s);
-int __exit(char **str, list_t *env, char **command);
+int __exit(char **str, list_t *env, int num, char **command);
 
 #endif
