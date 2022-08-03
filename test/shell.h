@@ -37,5 +37,14 @@ char *c_strdup(char *str, int cs);
 char *get_env(char *str, list_t *env);
 /* from _strcmp.c */
 int _strcmp(char *s1, char *s2);
+/* from _strdup.c */
+char *_strdup(char *str);
+/* from linked_list.c */
+size_t print_list(list_t *h);
+list_t *add_end_node(list_t **head, char *str);
+int delete_nodeint_at_index(list_t **head, int index);
+void free_linked_list(list_t *list);
+/* from free_double_ptr.c */
+void free_double_ptr(char **str);
 
 #endif
