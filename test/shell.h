@@ -35,5 +35,7 @@ void no_such_file_dir(char *str, int c_n, list_t *env);
 /* from get_env.c */
 char *c_strdup(char *str, int cs);
 char *get_env(char *str, list_t *env);
+/* from _strcmp.c */
+int _strcmp(char *s1, char *s2);
 
 #endif
