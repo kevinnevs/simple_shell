@@ -8,7 +8,7 @@
  * prints it on the next line.
  * 
  */
-int prompt(void)
+void prompt(void)
 {
     printf("$ ");
 }
