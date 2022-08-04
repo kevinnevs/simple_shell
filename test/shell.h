@@ -72,6 +72,8 @@ char *ignore_delm(char *str, char delm);
 char **_str_tok(char *str, char *delm);
 /* from _realloc.c */
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
-
+/* from c_strtok.c */
+int c_t_size(char *str, char delm);
+char **c_str_tok(char *str, char *delm);
 
 #endif
