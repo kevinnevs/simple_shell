@@ -89,5 +89,8 @@ int _setenv(list_t **env, char **str);
 /* from int_to_string.c */
 int numlen(int n);
 char *int_to_string(int number);
+/* from non_interactive.c */
+char *c_ignore(char *str);
+void non_interactive(list_t *env);
 
 #endif
