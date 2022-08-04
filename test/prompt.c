@@ -1,15 +1,27 @@
 #include "shell.h"
+
 /**
- * built_in - handles builtins
- * @token: users cmd
- * @env: enviromental variable
- * @num: takes nth user cmd to write error message
- * @command: bring in comand to free
+ * ctrl_c - ignore Ctrl-C input and prints prompt again
+ * @n: takes in int from signal
+ */
+void ctrl_c(int n)
+{
+	(void)n;
+	write(STDOUT_FILENO, "\n$ ", 3);
+}
+
+/**
+ * built_in - handles builtins (exit, env, cd)
+ * @token: user's typed command
+ * @env: environmental variable
+ * @num: take in nth user command typed to write error message
+ * @command: bring in command to free
  * Return: 1 if acted on builtin, 0 if not
  */
 int built_in(char **token, list_t *env, int num, char **command)
 {
 	int i = 0;
+
 	/* if user types "exit", free cmd tokens, and exit */
 	if (_strcmp(token[0], "exit") == 0)
 	{
@@ -42,7 +54,7 @@ int built_in(char **token, list_t *env, int num, char **command)
 }
 
 /**
- * ignore_space - returns string without spaces infront
+ * ignore_space - return string without spaces in front
  * @str: string
  * Return: new string
  */
@@ -54,29 +66,27 @@ char *ignore_space(char *str)
 }
 
 /**
- * ctrl_D - a func that exxits program if ctrl+D is pressed
- * @i: characters read via getline
- * @command: users cmd
- * @env: enviromental variable linked list
+ * ctrl_D - exits program if Ctrl-D was pressed
+ * @i: characters read via get_line
+ * @command: user's typed in command
+ * @env: environmental variable linked list
  */
-void ctrl_D (int i, char *command, list_t *env)
+void ctrl_D(int i, char *command, list_t *env)
 {
-	/* handles Ctrl+D */
-	if (i == 0)
+	if (i == 0) /* handles Ctrl+D */
 	{
-		free(command); /*exits with newline if in shell */
+		free(command); /* exit with newline if in shell */
 		free_linked_list(env);
-		/* ctrl+d prints newline */
-		if (isatty(STDIN_FILENO))
+		if (isatty(STDIN_FILENO))/* ctrl+d prints newline */
 			write(STDOUT_FILENO, "\n", 1);
 		exit(0);
 	}
 }
 
 /**
- * prompt - a function that prompts a user to key in
- * @en: enviromental variables
- * Return: 0 Always success
+ * prompt - repeatedly prompts user and executes user's cmds if applicable
+ * @en: envrionmental variables
+ * Return: 0 on success
  */
 int prompt(char **en)
 {
@@ -88,36 +98,31 @@ int prompt(char **en)
 	env = env_linked_list(en);
 	do {
 		command_line_no++;
-		/* prompts again if in interactive shell */
-		if(isatty(STDIN_FILENO))
+		if (isatty(STDIN_FILENO)) /* reprompt if in interactive shell */
 			write(STDOUT_FILENO, "$ ", 2);
-		/* reads users command in stdin */
-		i = get_line(&command);
-		/* exits shell if ctrl+D */
-		ctrl_D(i, command, env);
+		else
+			non_interactive(env);
+		signal(SIGINT, ctrl_c); /* makes ctrl+c not work */
+		command = NULL; i = 0; /* reset vars each time loop runs */
+		i = get_line(&command); /* read user's cmd in stdin */
+		ctrl_D(i, command, env); /* exits shell if ctrl-D */
 		n_command = command;
-		/* ignore_space function */
 		command = ignore_space(command);
-		/* replace get_lines \n with \0 */
-		while (command[0] != '\n')
+		n = 0;
+		while (command[n] != '\n') /* replace get_line's \n with \0 */
 			n++;
 		command[n] = '\0';
-		/* prompts again if user hits enter only */
-		if (command[0] == '\0')
+		if (command[0] == '\0') /* reprompt if user hits enter only */
 		{
-			free(n_command);
-			continue;
+			free(n_command); continue;
 		}
-		
-		token = NULL; token = _str_tok(command, " "); /*token user command */
+		token = NULL; token = _str_tok(command, " "); /*token user cmd*/
 		if (n_command != NULL)
 			free(n_command);
 		exit_stat = built_in(token, env, command_line_no, NULL);
 		if (exit_stat)
 			continue;
 		exit_stat = _execve(token, env, command_line_no);
-	}
-	/* keeps on repeating till user exits shell */
-	while (1);
+	} while (1); /* keep on repeating till user exits shell */
 	return (exit_stat);
 }
