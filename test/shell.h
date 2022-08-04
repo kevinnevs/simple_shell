@@ -75,5 +75,12 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 /* from c_strtok.c */
 int c_t_size(char *str, char delm);
 char **c_str_tok(char *str, char *delm);
+/* from _cd.c */
+char *c_strcat(char *dest, char *src);
+int c_setenv(list_t **env, char *name, char *dir);
+void cd_only(list_t *env, char *current);
+int cd_execute(list_t *env, char *current, char *dir, char *str, int num);
+int _cd(char **str, list_t *env, int num);
+
 
 #endif
