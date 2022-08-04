@@ -81,6 +81,9 @@ int c_setenv(list_t **env, char *name, char *dir);
 void cd_only(list_t *env, char *current);
 int cd_execute(list_t *env, char *current, char *dir, char *str, int num);
 int _cd(char **str, list_t *env, int num);
-
+/* from set_unset_env.v */
+int find_env(list_t *env, char *str);
+int _unsetenv(list_t **env, char **str);
+int _setenv(list_t **env, char **str);
 
 #endif
