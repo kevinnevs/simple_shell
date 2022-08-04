@@ -86,5 +86,8 @@ int _cd(char **str, list_t *env, int num);
 int find_env(list_t *env, char *str);
 int _unsetenv(list_t **env, char **str);
 int _setenv(list_t **env, char **str);
+/* from int_to_string.c */
+int numlen(int n);
+char *int_to_string(int number);
 
 #endif
