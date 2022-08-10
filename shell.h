@@ -30,5 +30,7 @@ char *_strcat(char *dest, char *src);
 char *_strcpy(char *dest, char *src);
 /* from exec.c */
 int exec(char **str);
+/* from _strdup.c */
+char *_strdup(char *str);
 
 #endif
