@@ -1,6 +1,6 @@
 ##### SIMPLE SHELL
 
-###### Betty 
+###### Betty
 - Write a beautiful code that passes the Betty checks
 ###### Simple shell0.1
 - Write a UNIX command line interpreter.

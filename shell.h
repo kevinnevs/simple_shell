@@ -14,7 +14,7 @@
 #include <signal.h>
 
 /**
- * struct_list - linked list for enviromental variables
+ * struct list - linked list for enviromental variables
  * @var: holds enviromental variable string
  * @next: prints to next node
  */
