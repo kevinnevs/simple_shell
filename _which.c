@@ -8,13 +8,13 @@
  */
 char *_which(char *str, list_t *env)
 {
-	char *pth, *cat = NULL, **toks;
+	char *path, *cat = NULL, **toks;
 	int i = 0;
 
 	/* get and tokenize PATH directories, then free original string */
-	pth = get_env("PATH", env);
-	toks = c_str_tok(pth, ":");
-	free(pth);
+	path = get_env("PATH", env);
+	toks = c_str_tok(path, ":");
+	free(path);
 
 	/* append "/cmd" to each token to see it's legit */
 	i = 0;
