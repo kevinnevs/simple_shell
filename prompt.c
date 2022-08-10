@@ -1,7 +1,6 @@
 #include "shell.h"
 /**
  * prompt - Function that prompts a user 
- *
  * Description: prints "$ ", wait for the user to enter a command.
  * prints it on the next line.
  *
@@ -13,7 +12,8 @@ int prompt(void)
 	int status = 0;
 	pid_t pid = 0;
 	char *command, **token;
-	do {
+	do 
+	{
 		write(STDOUT_FILENO, "Kev Nai Shell$ ", 15);
 		command = NULL;
 		i = _getline(&command, &buffsize, stdin);
