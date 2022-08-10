@@ -14,7 +14,7 @@ int prompt(void)
 	pid_t pid = 0;
 	char *command, **token;
 	do {
-		write(STDOUT_FILENO, "Kev Mel Shell$ ", 15);
+		write(STDOUT_FILENO, "Kev Nai Shell$ ", 15);
 		command = NULL;
 		i = _getline(&command, &buffsize, stdin);
 		n = 0;
