@@ -7,7 +7,7 @@
  * @
  * Return:
  */
-int exec (char **str)
+int exec(char **str)
 {
 	if (execve(s[0], s, NULL) == -1)
 	{
