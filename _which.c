@@ -1,44 +1,40 @@
 #include "shell.h"
-/**
- * _which - Function
- *
- * Description: looks for files in the current PATH
- *
- * @str: pointer parameter of type char
- *
- * Return: returns file
- */
 
-char *_which(char *str)
+/**
+ * _which - fleshes out command by appending it to a matching PATH directory
+ * @str: first command user typed into shell (e.g. "ls" if user typed "ls -l")
+ * @env: environmental variable
+ * Return: a copy of fleshed out command (e.g. "/bin/ls" if originally "ls")
+ */
+char *_which(char *str, list_t *env)
 {
-	char *env, *cat, **toks;
-	int i = 0, f = 0;
-	env = path("PATH");
-	toks = _strtok(env, ":");
-	free(env);
+	char *pth, *cat = NULL, **toks;
+	int i = 0;
+
+	/* get and tokenize PATH directories, then free original string */
+	pth = get_env("PATH", env);
+	toks = c_str_tok(pth, ":");
+	free(pth);
+
+	/* append "/cmd" to each token to see it's legit */
+	i = 0;
 	while (toks[i] != NULL)
 	{
-		cat = _strdup(toks[i]);
+		if (toks[i][0] == '\0')
+			cat = getcwd(cat, 0);
+		else
+			cat = _strdup(toks[i]);
 		cat = _strcat(cat, "/");
 		cat = _strcat(cat, str);
 		if (access(cat, F_OK) == 0)
 		{
-			while (toks[f] != NULL)
-			{
-				free(toks[f]);
-				f++;
-			}
-			free(toks);
+			/* free tokens before returning legit fleshed path */
+			free_double_ptr(toks);
 			return (cat);
 		}
-		free(cat);
+		free(cat); /* free concatenated string if cmd is never found */
 		i++;
 	}
-	while (toks[f] != NULL)
-	{
-		free(toks[f]);
-		f++;
-	}
-	free(toks);
-	return (NULL);
+	free_double_ptr(toks);
+	return (str); /* return string if not found; won't pass execve */
 }
