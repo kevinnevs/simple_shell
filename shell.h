@@ -23,7 +23,7 @@ typedef struct list
 /* from prompt.c */
 int prompt(void);
 /* from _getline.c */
-size_t _getline(char **str);
+size_t _getline(char **str, size_t *size, FILE *stream);
 /* from _strcat.c */
 char *_strcat(char *dest, char *src);
 /* from _strcpy.c */
@@ -31,6 +31,8 @@ char *_strcpy(char *dest, char *src);
 /* from exec.c */
 int exec(char **str);
 /*from _which.c*/
+char *path(char *str);
+char *c_strdup(char *str, int cs);
 char *_which(char *str);
 /* from _strdup.c */
 char *_strdup(char *str);

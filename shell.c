@@ -1,14 +1,17 @@
 #include "shell.h"
 /**
- * main - Entry point
- *
- * Description: A shell program
- *
- * Return: 
+ * main - creates simple shell
+ * @ac: argument count
+ * @av: argument vector
+ * @env: enviromental variables
+ * Return: 0 on success 
  */
-int main(void)
+int main(int ac, char **av, char **env)
 {
-	prompt();
+	(void)ac;
+	(void)av;
+
+	prompt(env);
+
 	return (0);
 }
-
