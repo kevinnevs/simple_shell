@@ -34,5 +34,7 @@ int exec(char **str);
 char *_which(char *str);
 /* from _strdup.c */
 char *_strdup(char *str);
+/* from _realloc.c */
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 
 #endif
