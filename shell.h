@@ -32,5 +32,7 @@ char *_strcpy(char *dest, char *src);
 int exec(char **str);
 /*from _which.c*/
 char *_which(char *str);
+/* from _strdup.c */
+char *_strdup(char *str);
 
 #endif
