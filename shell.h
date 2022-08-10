@@ -23,7 +23,7 @@ typedef struct list
 /* from prompt.c */
 int prompt(void);
 /* from _getline.c */
-size_t get_line(char **str);
+size_t _getline(char **str);
 /* from _strcat.c */
 char *_strcat(char *dest, char *src);
 /* from _strcpy.c */
