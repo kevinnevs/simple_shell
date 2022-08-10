@@ -21,5 +21,6 @@ typedef struct list
 } list_t;
 
 char *prompt(void);
+int exec(char **s);
 
 #endif
