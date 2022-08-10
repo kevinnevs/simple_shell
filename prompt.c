@@ -1,11 +1,11 @@
 #include "shell.h"
 /**
- * prompt - Function
+ * prompt - Function that prompts a user 
  *
  * Description: prints "$ ", wait for the user to enter a command.
  * prints it on the next line.
  *
- * Return:
+ * Return: 0 on Success
  */
 int prompt(void)
 {
